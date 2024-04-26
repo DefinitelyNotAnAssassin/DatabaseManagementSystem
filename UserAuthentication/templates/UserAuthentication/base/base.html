@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    {% block head %} {% endblock head %}
+  </head>
+  <body>
+    <div class="h-[8vh] flex justify-end w-full bg-[#274E7E] items-center">
+      <button class="text-white text-lg p-1 px-2 mx-2">Home</button>
+      <button class="text-white text-lg p-1 px-2 mx-2">Contact</button>
+      <button class="text-white text-lg p-1 px-2 mx-2">Log in</button>
+    </div>
+
+    <div
+      class="h-[92vh] w-full bg-gray-600 no-repeat bg-cover bg-center flex flex-col"
+      style="
+        background-image: url('https://s3-alpha-sig.figma.com/img/77f6/4907/09fdbf3fbebd32aaa5bdaeb44dbc2471?Expires=1714348800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Y5tlHnGuHOieoYyy0vpyWxvZjgXl1JfnWs35DMcgzi7FFS6rDmbJIatSgmyzEevxjZqO~NMyO8u26dqaxEV1XTYc4-n-rJNTPslXuiXPBvM7IH8kC0dOItBcizQADyUeJmXRpgQz9csRqhIxzY8QKkY7Hmcaddf3sk6-lze7LNE6MJwAZH5IczAqgqG4cTMkxLnJg2Bkbz~8RkINdrDe5QsxrgVv1ADo1QQVbt4tq-~cWAduMf72kbAa44dcLxrcu11gAdN-5HOfD~t8TqRr8AqFyvktrO1slMbvJ~9MeOjohQj8bmq-~28p3ZK9WCqJVKNKES7y7omF2VjNUNmFlg__');
+      "
+    >
+      {% block content %} {% endblock content %}
+    </div>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+{% extends "UserAuthentication/base/base.html" %} {% block content %}
+
+<div class="flex flex-col h-full w-full">
+  <div
+    class="flex w-full h-[75vh] items-center border border-black justify-end"
+  >
+    <div
+      class="flex flex-col items-center bg-white bg-opacity-70 h-[70%] w-[20%] mr-16 space-y-2"
+    >
+      <div class="flex items-center space-x-3 mt-3">
+        <div class="triangle">Triangle</div>
+        <div class="bg-white h-16 w-16 rounded rounded-full"></div>
+      </div>
+      <input
+        type="text"
+        class="px-2 w-[90%] placeholder:text-black py-2 bg-white bg-opacity-40"
+        placeholder="Username"
+      />
+      <input
+        type="text"
+        class="px-2 w-[90%] placeholder:text-black py-2 bg-white bg-opacity-40"
+        placeholder="Password"
+      />
+    </div>
+  </div>
+
+  <div class="flex h-1/2 w-full items-end">
+    <div class="flex w-1/4 flex-col ml-16 mb-8 bg-gray-50 bg-opacity-50">
+      <h1 class="ml-4 h-auto text-6xl leading-tight">DATE</h1>
+      <h1 class="ml-4 h-auto text-5xl leading-tight" id="time">Time</h1>
+    </div>
+  </div>
+
+  <script>
+    function updateTime() {
+      var now = new Date()
+      var hours = now.getHours()
+      var minutes = now.getMinutes()
+      var seconds = now.getSeconds()
+      if (hours < 10) hours = "0" + hours
+      if (minutes < 10) minutes = "0" + minutes
+      if (seconds < 10) seconds = "0" + seconds
+      document.getElementById("time").innerHTML =
+        hours + ":" + minutes + ":" + seconds
+    }
+    setInterval(updateTime, 1000)
+  </script>
+</div>
+
+{% endblock content %}
