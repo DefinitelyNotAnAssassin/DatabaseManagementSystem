@@ -28,12 +28,17 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+
+
 # Application definition
 
 INSTALLED_APPS = [
+    'unfold',
+    'DatabaseMenu.apps.DatabasemenuConfig',
     'UserAuthentication.apps.UserauthenticationConfig',
     'LandingPage.apps.LandingpageConfig',
     'AdministrationDepartment.apps.AdministrationdepartmentConfig',
+    'TechnicalServicesDivision.apps.TechnicalservicesdivisionConfig',   
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -103,6 +108,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+
+AUTH_USER_MODEL = "UserAuthentication.Account"
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 

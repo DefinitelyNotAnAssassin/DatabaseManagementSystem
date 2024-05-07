@@ -20,4 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('LandingPage.urls')),
     path('', include('UserAuthentication.urls')),
+    path('', include('DatabaseMenu.urls')),
+    path('administration/', include('AdministrationDepartment.urls')),
+    path('tsd/', include('TechnicalServicesDivision.urls')),
 ]
