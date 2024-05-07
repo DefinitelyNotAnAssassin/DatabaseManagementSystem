@@ -19,3 +19,8 @@ def login(request):
 
 def register(request): 
     return render(request, "UserAuthentication/signup.html")
+
+
+def logout(request): 
+    auth_logout(request)
+    return redirect("login")
