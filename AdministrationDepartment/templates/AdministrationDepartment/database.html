@@ -115,7 +115,7 @@
 
 <!-- Full Name and Division Assigned -->
 <div class="text-blue-800 mt-4">
-  FULL NAME<br />
-  DIVISION ASSIGNED
+  {{request.user.last_name}}, {{request.user.first_name}}<br />
+  {{request.user.department}}
 </div>
 {% endblock content %}
