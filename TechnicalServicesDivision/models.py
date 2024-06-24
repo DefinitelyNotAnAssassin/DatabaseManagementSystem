@@ -4,7 +4,6 @@ from django.db import models
 
 
 class TSDReceivingForm(models.Model):
-    project_number = models.CharField(max_length=100)
     project_title = models.CharField(max_length=100)
     office = models.CharField(max_length=100)
     abc = models.CharField(max_length=100)

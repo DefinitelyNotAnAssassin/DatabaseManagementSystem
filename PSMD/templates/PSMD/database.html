@@ -1,0 +1,63 @@
+{% extends "PSMD/base/base.html" %}
+
+<!-- PSMD Database -->
+{% block content %}
+
+<div class="h-full w-full">
+  <div class="w-full text-center">
+    <h1 class="text-7xl text-white mt-4">PSMD: DATABASE</h1>
+  </div>
+
+  <div class="w-full flex justify-end">
+    <span class="mr-4">
+      <h1 class="text-xl text-end text-white font-semibold mb-2">CANVASSER</h1>
+      <input type="text" name="" id="" />
+    </span>
+  </div>
+
+  <div class="h-[73vh] flex flex-grow w-full">
+    <div class="h-full w-[10%] flex flex-col mx-4">
+      <a href="" class="mb-2 p-2 bg-white rounded text-center">PR Inventory</a>
+      <a href="" class="mb-2 p-2 bg-white rounded text-center">Canvass List</a>
+      <a href="" class="mb-2 p-2 bg-white rounded text-center">Evaluation</a>
+      <a href="" class="mb-2 p-2 bg-white rounded text-center">Search</a>
+    </div>
+
+    <div class="h-full w-[90%]">
+      <div class="flex items-center">
+        <h1 class="text-white text-xl font-semibold mr-4">For Canvass</h1>
+        <a href="" class="bg-[#94B9E8] p-2 px-4 rounded">Refresh</a>
+      </div>
+
+      <table class="w-full text-white mt-4">
+        <thead>
+          <tr>
+            <th class="p-1 p-x-2 bg-[#274E7E]">PR NUMBER</th>
+            <th class="p-1 p-x-2 bg-[#274E7E]">ABC</th>
+            <th class="p-1 p-x-2 bg-[#274E7E]">EXPENDITURE</th>
+            <th class="p-1 p-x-2 bg-[#274E7E]">RCVD ADV</th>
+            <th class="p-1 p-x-2 bg-[#274E7E]">RCVD ORG</th>
+            <th class="p-1 p-x-2 bg-[#274E7E]">DAYS</th>
+            <th class="p-1 p-x-2 bg-[#274E7E]">CANVASSER</th>
+            <th class="p-1 p-x-2 bg-[#274E7E]">CANVASSER 2</th>
+          </tr>
+        </thead>
+
+        <tbody class="w-full h-[60vh] bg-[#94B9E8]">
+          <tr>
+            <td class="border border-white"></td>
+            <td class="border border-white"></td>
+            <td class="border border-white"></td>
+            <td class="border border-white"></td>
+            <td class="border border-white"></td>
+            <td class="border border-white"></td>
+            <td class="border border-white"></td>
+            <td class="border border-white"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

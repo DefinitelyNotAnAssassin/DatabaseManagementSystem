@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,4 +25,7 @@ urlpatterns = [
     path('', include('DatabaseMenu.urls')),
     path('administration/', include('AdministrationDepartment.urls')),
     path('tsd/', include('TechnicalServicesDivision.urls')),
-]
+    path('dmd/', include('DatabaseManagementDivision.urls')),
+    path('infrastructure/', include('InfrastructureCommittee.urls')),
+    path('psmd/', include('PSMD.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

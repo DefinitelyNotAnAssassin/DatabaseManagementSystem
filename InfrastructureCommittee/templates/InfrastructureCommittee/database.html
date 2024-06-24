@@ -1,0 +1,60 @@
+{% extends "InfrastructureCommittee/base/base.html" %} {% block content %}
+
+<div class="h-full w-full flex justify-center items-center">
+  <h1
+    class="w-full text-center flex flex-col justify-center items-center space-y-2"
+  >
+  <a
+  class="bg-[#274E7E] w-1/2 h-[10vh] flex justify-center items-center text-xl py-1"
+  href="{% url 'infrastructure masterlist' %}"
+>
+  <h1
+    class="bg-gray-300 h-[70%] w-[90%] flex justify-center items-center font-semibold"
+  >
+    Infra Masterlist
+  </h1>
+</a>
+
+<a
+  class="bg-[#274E7E] w-1/2 h-[10vh] flex justify-center items-center text-xl py-1"
+  href="{% url 'infrastructure receiving' %}"
+>
+  <h1
+    class="bg-gray-300 h-[70%] w-[90%] flex justify-center items-center font-semibold"
+  >
+    Receiving Consultancy
+  </h1>
+</a>
+
+<a
+  class="bg-[#274E7E] w-1/2 h-[10vh] flex justify-center items-center text-xl py-1"
+  href=""
+>
+  <h1
+    class="bg-gray-300 h-[70%] w-[90%] flex justify-center items-center font-semibold"
+  >
+    Consultancy Database
+  </h1>
+</a>
+
+<a
+  class="bg-[#274E7E] w-1/2 h-[10vh] flex justify-center items-center text-xl py-1"
+  href="{% url 'infrastructure bidding documents' %}"
+>
+  <h1
+    class="bg-gray-300 h-[70%] w-[90%] flex justify-center items-center font-semibold"
+  >
+    Bidding Documents
+  </h1>
+</a>
+
+</div>
+
+<div class="h-8 w-1/4 flex items-end mx-2">
+  <div class="bg-white bg-opacity-70 w-1/2 h-1/8">
+    <h1>{{request.user.last_name}}, {{request.user.first_name}}</h1>
+    <h1>{{request.user.department}}</h1>
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,294 @@
+{% extends "InfrastructureCommittee/base/extended_base.html" %}
+
+<!-- Infrastructure Committee -->
+
+{% block content %}
+
+<div class="h-screen w-full flex flex-col items-center justify-center">
+  <h1 class="text-3xl font-semibold text-white w-3/4 text-center">
+    INFRASTRUCTURE MASTERLIST
+  </h1>
+  <div class="h-[90vh] w-[90vw] bg-[#274E7E] flex flex-col overflow-y-auto">
+    <form class="w-full flex justify-end items-center mt-2 mb-12">
+      <h1 class="text-white mr-2">SEARCH BY PROJECT NUMBER</h1>
+      <input type="text" name="project_number" class="mr-3" id="" />
+      <button
+        type="submit"
+        class="bg-white font-semibold p-2 rounded rounded-lg mr-2"
+      >
+        Search
+      </button>
+    </form>
+
+    <form
+      class="w-full flex h-full"
+      action="{% url 'update infrastructure' %}"
+      method="POST"
+    >
+      <input type="hidden" name="id" value="{{infra.id}}" />
+      {% csrf_token%}
+      <div class="w-[70%] h-full flex flex-col space-y-2">
+        <div class="flex w-full">
+          <h1 class="text-white text-xl w-1/4 ml-4">PROJECT NO:</h1>
+          <input
+            type="text"
+            name="project_number"
+            id=""
+            value="{{infra.project_number}}"
+            class="flex-grow"
+          />
+        </div>
+
+        <div class="flex w-full">
+          <h1 class="text-white text-xl w-1/4 ml-4">PROJECT TITLE:</h1>
+          <input
+            type="text"
+            name="project_title"
+            value="{{infra.project_title}}"
+            id=""
+            class="flex-grow"
+          />
+        </div>
+
+        <div class="flex w-full">
+          <h1 class="text-white text-xl w-1/4 ml-4">OFFICE:</h1>
+          <input
+            type="text"
+            name="office"
+            value="{{infra.office}}"
+            id=""
+            class="flex-grow"
+          />
+        </div>
+
+        <div class="flex w-full">
+          <h1 class="text-white text-xl w-1/4 ml-4">FUND SOURCE:</h1>
+          <input
+            type="text"
+            name="fund_source"
+            value="{{infra.fund_source}}"
+            id=""
+            class="flex-grow"
+          />
+        </div>
+
+        <div class="flex w-full">
+          <h1 class="text-white text-xl w-1/4 ml-4">ABC:</h1>
+          <input
+            type="text"
+            name="abc"
+            value="{{infra.abc}}"
+            id=""
+            class="flex-grow"
+          />
+        </div>
+
+        <div class="flex w-full">
+          <h1 class="text-white text-xl w-1/4 ml-4">BID AMOUNT:</h1>
+          <input
+            type="text"
+            name="bid_amount"
+            value="{{infra.bid_amount}}"
+            id=""
+            class="flex-grow"
+          />
+        </div>
+
+        <div class="flex w-full">
+          <h1 class="text-white text-xl w-1/4 ml-4">DURATION:</h1>
+          <input
+            type="text"
+            name="duration"
+            value="{{infra.duration}}"
+            id=""
+            class="flex-grow"
+          />
+        </div>
+
+        <div class="flex w-full">
+          <h1 class="text-white text-xl w-1/4 ml-4">MODE:</h1>
+          <input
+            type="text"
+            name="mode"
+            value="{{infra.mode}}"
+            id=""
+            class="flex-grow"
+          />
+        </div>
+
+        <div class="flex w-full">
+          <h1 class="text-white text-xl w-1/4 ml-4">CONTRACTOR:</h1>
+          <input
+            type="text"
+            name="contractor"
+            value="{{infra.contractor}}"
+            id=""
+            class="flex-grow"
+          />
+        </div>
+
+        <div class="flex w-full">
+          <h1 class="text-white text-xl w-1/4 ml-4">STATUS:</h1>
+          <input
+            type="text"
+            name="status"
+            value="{{infra.status}}"
+            id=""
+            class="flex-grow"
+          />
+        </div>
+
+        <div class="flex w-full">
+          <h1 class="text-white text-xl w-1/4 ml-4">REMARKS:</h1>
+          <input
+            type="text"
+            name="remarks"
+            value="{{infra.remarks}}"
+            id=""
+            class="flex-grow"
+          />
+        </div>
+      </div>
+
+      <div class="h-full w-[30%] ml-4">
+        <div class="flex mr-3 my-2">
+          <h1 class="text-white text-xl w-64">PRE-PROC DATE:</h1>
+          <input
+            type="text"
+            name="pre_proc_date"
+            id=""
+            class="flex-grow"
+            value="{{infra.pre_proc_date}}"
+          />
+        </div>
+        <div class="flex mr-3 my-2">
+          <h1 class="text-white text-xl w-64">ITB DATE:</h1>
+          <input
+            type="text"
+            name="itb_date"
+            id=""
+            class="flex-grow"
+            value="{{infra.itb_date}}"
+          />
+        </div>
+        <div class="flex mr-3 my-2">
+          <h1 class="text-white text-xl w-64">PRE-BID DATE:</h1>
+          <input
+            type="text"
+            name="pre_bid_date"
+            id=""
+            class="flex-grow"
+            value="{{infra.pre_bid_date}}"
+          />
+        </div>
+        <div class="flex mr-3 my-2">
+          <h1 class="text-white text-xl w-64">BIDDING DATE:</h1>
+          <input
+            type="text"
+            name="bidding_date"
+            id=""
+            class="flex-grow"
+            value="{{infra.bidding_date}}"
+          />
+        </div>
+        <div class="flex mr-3 my-2">
+          <h1 class="text-white text-xl w-64">BID EVAL DATE:</h1>
+          <input
+            type="text"
+            name="bid_eval_date"
+            id=""
+            class="flex-grow"
+            value="{{infra.bid_eval_date}}"
+          />
+        </div>
+
+        <div class="flex mr-3 my-2">
+          <h1 class="text-white text-xl w-64">POST QUA:</h1>
+          <input
+            type="text"
+            name="post_qua"
+            id=""
+            class="flex-grow"
+            value="{{infra.post_qua}}"
+          />
+        </div>
+
+        <div class="flex mr-3 my-2">
+          <h1 class="text-white text-xl w-64">RESO DATE:</h1>
+          <input
+            type="text"
+            name="reso_date"
+            id=""
+            class="flex-grow"
+            value="{{infra.reso_date}}"
+          />
+        </div>
+
+        <div class="flex mr-3 my-2">
+          <h1 class="text-white text-xl w-64">NOA DATE:</h1>
+          <input
+            type="text"
+            name="noa_date"
+            id=""
+            class="flex-grow"
+            value="{{infra.noa_date}}"
+          />
+        </div>
+
+        <div class="flex mr-3 my-2">
+          <h1 class="text-white text-xl w-64">CONTRACT DATE:</h1>
+          <input
+            type="text"
+            name="contract_date"
+            id=""
+            class="flex-grow"
+            value="{{infra.contract_date}}"
+          />
+        </div>
+
+        <div class="flex mr-3 my-2">
+          <h1 class="text-white text-xl w-64">NP START:</h1>
+          <input
+            type="text"
+            name="np_start"
+            id=""
+            class="flex-grow"
+            value="{{infra.np_start}}"
+          />
+        </div>
+
+        <div class="flex mr-3 my-2">
+          <h1 class="text-white text-xl w-64">NP END:</h1>
+          <input
+            type="text"
+            name="np_end"
+            id=""
+            class="flex-grow"
+            value="{{infra.np_end}}"
+          />
+        </div>
+
+        <div class="flex w-full justify-between">
+          <button
+            class="font-semibold px-2 py-2 mb-2 flex-grow rounded mx-2 bg-white text-blue-500"
+          >
+            ADD BIDDER
+          </button>
+          <button
+            type="submit"
+            class="font-semibold px-2 py-2 mb-2 flex-grow rounded mx-2 bg-white text-blue-500"
+          >
+            UPDATE
+          </button>
+          <button
+            class="font-semibold px-2 py-2 mb-2 flex-grow rounded mx-2 bg-white text-blue-500"
+          >
+            CLOSE
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

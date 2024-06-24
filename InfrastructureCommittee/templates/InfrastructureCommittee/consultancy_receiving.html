@@ -1,0 +1,82 @@
+{% extends "InfrastructureCommittee/base/extended_base.html" %}
+
+<!-- Infrastructure Committee -->
+
+{% block content %}
+
+<div class="h-screen w-full flex flex-col items-center justify-center">
+  <h1 class="text-3xl font-semibold text-white w-3/4 text-center">
+    CONSULTANCY RECEIVING
+  </h1>
+  <div class="h-[90vh] w-[90vw] bg-[#274E7E] flex flex-col overflow-y-auto">
+    <div class="w-full flex justify-end items-center mt-2 mb-12">
+      <h1 class="text-white mr-2">SEARCH BY PROJECT NUMBER</h1>
+      <input type="text" name="project_number" class="mr-3" id="" />
+    </div>
+
+    <div class="w-full flex h-full items-center justify-center">
+      <div class="w-[90%] h-full flex flex-col">
+        <div class="flex w-full mb-2">
+          <h1 class="text-white text-xl w-1/4 ml-4">PROJECT NO:</h1>
+          <input type="text" name="" id="" class="flex-grow" />
+        </div>
+
+        <div class="flex w-full mb-2">
+          <h1 class="text-white text-xl w-1/4 ml-4">ACCOUNT CODE:</h1>
+          <input type="text" name="" id="" class="flex-grow" />
+        </div>
+
+        <div class="flex w-full mb-2">
+          <h1 class="text-white text-xl w-1/4 ml-4">PROJECT TITLE:</h1>
+          <input type="text" name="" id="" class="flex-grow" />
+        </div>
+
+        <div class="flex w-full mb-2">
+          <h1 class="text-white text-xl w-1/4 ml-4">ABC:</h1>
+          <input type="text" name="" id="" class="flex-grow" />
+        </div>
+
+        <div class="flex w-full mb-2">
+          <h1 class="text-white text-xl w-1/4 ml-4">BID AMOUNT:</h1>
+          <input type="text" name="" id="" class="flex-grow" />
+        </div>
+
+        <div class="flex w-full mb-2">
+          <h1 class="text-white text-xl w-1/4 ml-4">OFFICE:</h1>
+          <input type="text" name="" id="" class="flex-grow" />
+        </div>
+
+        <div class="flex w-full mb-2">
+          <h1 class="text-white text-xl w-1/4 ml-4">LOCATION:</h1>
+          <input type="text" name="" id="" class="flex-grow" />
+        </div>
+
+        <div class="flex w-full mb-2">
+          <h1 class="text-white text-xl w-1/4 ml-4">CALENDAR DAYS:</h1>
+          <input type="text" name="" id="" class="flex-grow" />
+        </div>
+
+        <div class="flex w-full items-center justify-center space-x-4 mt-8">
+          <button class="p-2 px-5 bg-white font-semibold rounded px-3">
+            NEW
+          </button>
+
+          <a
+            href="{% url 'tsd database' %}"
+            class="p-2 px-5 bg-white font-semibold rounded px-3"
+          >
+            SAVE
+          </a>
+          <a
+            href="{% url 'tsd database' %}"
+            class="p-2 px-5 bg-white font-semibold rounded px-3"
+          >
+            CANCEL
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

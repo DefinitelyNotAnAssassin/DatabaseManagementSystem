@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-!h&9e%mhy312d7ak0a7md4^5l&cyft&jjcbz#@uyuhow_!2qc(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    
+    '127.0.0.1'
+]
 
 
 
@@ -38,7 +41,11 @@ INSTALLED_APPS = [
     'UserAuthentication.apps.UserauthenticationConfig',
     'LandingPage.apps.LandingpageConfig',
     'AdministrationDepartment.apps.AdministrationdepartmentConfig',
-    'TechnicalServicesDivision.apps.TechnicalservicesdivisionConfig',   
+    'TechnicalServicesDivision.apps.TechnicalservicesdivisionConfig', 
+    'DatabaseManagementDivision.apps.DatabasemanagementdivisionConfig',
+    'InfrastructureCommittee.apps.InfrastructurecommitteeConfig',   
+    'PSMD.apps.PsmdConfig',
+    'ProjectNumber.apps.ProjectnumberConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -129,6 +136,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

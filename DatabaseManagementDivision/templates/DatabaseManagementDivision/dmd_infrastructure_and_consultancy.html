@@ -1,0 +1,90 @@
+{% extends "DatabaseManagementDivision/base/blank_base.html" %}
+<div />
+{% block content %}
+
+<div class="w-full flex justify-between items-center">
+  <div></div>
+  <h1 class="text-2xl">DMD: INFRASTRUCTURE AND CONSULTANCY</h1>
+  <div class="mx-2">
+    <h1>{{request.user.last_name}}, {{request.user.first_name}}</h1>
+    <h1>{{request.user.department}}</h1>
+  </div>
+</div>
+
+<div class="w-full flex justify-between items-center">
+  <div class="flex">
+    <span class="flex space-x-2">
+      <h1 class = "w-36">Project Number:</h1>
+      <h1 class="w-36 bg-blue-700"></h1>
+    </span>
+
+    <span class="flex ml-12 space-x-2">
+      <h1 class="">Requesting Office/s:</h1>
+      <h1 class="w-36 bg-blue-700"></h1>
+    </span>
+  </div>
+
+  <div class="flex items-center mx-2">
+    <h1>Tracking Number:</h1>
+    <input
+      type="text"
+      name=""
+      id=""
+      class="h-6"
+      placeholder="Tracking Number"
+    />
+  </div>
+</div>
+
+<div class="flex 
+ justify-between mb-2">
+  <div class = "">
+    <span class="flex space-x-2">
+      <h1 class = "w-36 class = "w-20"">ABC:</h1>
+      <h1 class="w-36 bg-blue-700"></h1>
+    </span>
+
+    <span class="flex space-x-2">
+      <h1 class = "w-36 class = "w-20"">Project Title:</h1>
+      <h1 class="w-36 bg-blue-700"></h1>
+    </span>
+
+   
+  </div>
+    <div class = "flex items-end">
+        <h1 class = "bg-blue-400 mx-1 px-1">Amendatory</h1>
+
+    </div>
+</div>
+
+<div class="flex h-[40vh] w-full mb-2 space-x-1">
+  <div class = "w-full bg-blue-400 h-full">
+    
+  </div>
+
+ 
+
+
+  
+</div>
+
+
+<div class="flex h-[40vh] w-full space-x-1">
+  <div class = "w-[80%] bg-[#FAC7C7] h-full">
+
+  </div>
+
+  <div class = "w-[20%] h-full flex flex-col justify-end space-y-2">
+        <button class="p-2 bg-blue-400">PROJECT LIST</button>
+        <button class="p-2 bg-blue-400">SAVE RECORD</button>
+        <button class="p-2 bg-blue-400">PRINT VALIDATION</button>
+  </div>
+
+
+  
+</div>
+
+<div class = "h-[10vh] w-full"></div>
+
+  {% endblock %}
+
