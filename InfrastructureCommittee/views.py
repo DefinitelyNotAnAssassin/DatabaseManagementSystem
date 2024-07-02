@@ -66,7 +66,7 @@ def update_infra(request):
 
 
 def bidding_documents(request):
-    if request.GET.get('project_number') is not None:
+    if request.GET.get('project_number') is not None and request.method == "GET":
         search = request.GET.get('project_number')
         try:
        
@@ -88,37 +88,27 @@ def bidding_documents(request):
             return render(request, 'InfrastructureCommittee/bidding_documents.html')
     
     elif request.method == "POST": 
-        id = request.POST.get('id')
-        update_infra = InfrastructureCommittee.objects.get(id=id)
-        update_infra.abc = request.POST.get('abc', '')
-        update_infra.early_procurement = request.POST.get('early_procurement', '')
-        update_infra.office = request.POST.get('office', '')
-        update_infra.location = request.POST.get('location', '')
-        update_infra.calendar_days = request.POST.get('calendar_days', '')
-        update_infra.batch = request.POST.get('batch', '')
-        update_infra.mode_of_procurement = request.POST.get('mode_of_procurement', '')
-        update_infra.pre_bid_date = request.POST.get('pre_bid_date', '')
-        update_infra.fund_source = request.POST.get('fund_source', '')
-        update_infra.duration = request.POST.get('duration', '')
-        update_infra.remarks = request.POST.get('remarks', '')
-        update_infra.status = request.POST.get('status', '')
-        update_infra.mode = request.POST.get('mode', '')
-        update_infra.bid_amount = request.POST.get('bid_amount', '')
-        update_infra.pre_proc_date = request.POST.get('pre_proc_date', '')
-        update_infra.itb_date = request.POST.get('itb_date', '')
-        update_infra.pre_bid_date = request.POST.get('pre_bid_date', '')
-        update_infra.bidding_date = request.POST.get('bidding_date', '')
-        update_infra.bid_eval_date = request.POST.get('bid_eval_date', '')
-        update_infra.post_qua = request.POST.get('post_qua', '')
-        update_infra.reso_date = request.POST.get('reso_date', '')
-        update_infra.noa_date = request.POST.get('noa_date', '')
-        update_infra.contract_date = request.POST.get('contract_date', '')
-        update_infra.np_start = request.POST.get('np_start', '')
-        update_infra.np_end = request.POST.get('np_end', '')
+        form = InfrastructureCommitteeForm(request.POST, instance = InfrastructureCommittee.objects.get(id=request.POST.get('id')))
+        form.save()
+        try:
+       
+            infra_masterlist = InfrastructureCommittee.objects.get(project_number=request.POST.get('project_number'))
         
-        print(request.POST)
-        update_infra.save()
-        return redirect(("infrastructure bidding documents"))
+            if infra_masterlist.abc != "None": 
+                abc2 = float(infra_masterlist.abc) * 0.02
+                abc5 = float(infra_masterlist.abc) * 0.05
+                abc_in_words = inflect.engine().number_to_words(infra_masterlist.abc)
+            else: 
+                abc2 = 0
+                abc5 = 0
+                abc_in_words = "Zero"
+            return render(request, 'InfrastructureCommittee/bidding_documents.html', {'infra': infra_masterlist, 'abc2': abc2, 'abc5': abc5, 
+                                                                                      'abc_in_words': abc_in_words})
+        except Exception as e: 
+            print("No project number found, " + str(e) )
+            infra_masterlist = []
+            return render(request, 'InfrastructureCommittee/bidding_documents.html')
+    
     
     else:
         return render(request, 'InfrastructureCommittee/bidding_documents.html')

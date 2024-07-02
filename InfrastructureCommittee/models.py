@@ -23,7 +23,8 @@ class InfrastructureCommittee(models.Model):
     bid_amount = models.CharField(max_length=255, blank=True, null=True)
     pre_proc_date = models.CharField(max_length=255, blank=True, null=True)
     itb_date = models.CharField(max_length=255, blank=True, null=True)
-   
+    key_personnel = models.CharField(max_length=255, blank=True, null=True)
+    major_equipment = models.CharField(max_length=255, blank=True, null=True)
     bidding_date = models.CharField(max_length=255, blank=True, null=True)
     bid_eval_date = models.CharField(max_length=255, blank=True, null=True)
     post_qua = models.CharField(max_length=255, blank=True, null=True)
