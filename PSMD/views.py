@@ -9,3 +9,7 @@ def database(request):
 
 def inventory(request):
     return render(request, 'PSMD/inventory.html')
+
+
+def evaluation_sheet(request):
+    return render(request, 'PSMD/evaluation_sheet.html')

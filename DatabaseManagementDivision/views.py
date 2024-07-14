@@ -19,3 +19,15 @@ def infrastructure_and_consultancy(request):
 
 def public_bidding(request):
     return render(request, 'DatabaseManagementDivision/dmd_public_bidding.html')
+
+def balance_checker(request):
+    return render(request, 'DatabaseManagementDivision/dmd_balance_checker.html')
+
+def balance_checker_app_id(request):
+    return render(request, 'DatabaseManagementDivision/dmd_balance_checker_app_id.html')
+
+def amendatory_list(request):
+    return render(request, 'DatabaseManagementDivision/dmd_amendatory_list.html')
+
+def amendatory_procurement_plan(request):
+    return render(request, 'DatabaseManagementDivision/dmd_amendatory_procurement_plan.html')
