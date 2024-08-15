@@ -6,6 +6,12 @@ from django.shortcuts import render
 def home(request):
     return render(request, 'DatabaseManagementDivision/home.html')
 
+def validation_home(request):
+    return render(request, 'DatabaseManagementDivision/dmd_validation_home.html')
+
+def public_bidding_home(request):
+    return render(request, 'DatabaseManagementDivision/dmd_public_bidding_home.html')
+
 def validation(request):
     return render(request, 'DatabaseManagementDivision/dmd_validation.html')
 
@@ -31,3 +37,6 @@ def amendatory_list(request):
 
 def amendatory_procurement_plan(request):
     return render(request, 'DatabaseManagementDivision/dmd_amendatory_procurement_plan.html')
+
+def ppmp_finding(request):
+    return render(request, 'DatabaseManagementDivision/dmd_ppmp_finding.html')

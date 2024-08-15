@@ -17,4 +17,4 @@ class TSDReceivingForm(models.Model):
     
     
     def __str__(self):
-        return self.project_number
+        return self.project_title + "-" + self.fundyear

@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect
 from TechnicalServicesDivision.models import TSDReceivingForm
+from TechnicalServicesDivision.forms import TechnicalServicesDivisionForm    
+from ProjectNumber.models import ProjectNumbers
+
 
 # Create your views here.
 
@@ -11,29 +14,39 @@ def database (request):
         return render(request, 'TechnicalServicesDivision/database.html')
     else:
         data = request.POST
-        newReceiving = TSDReceivingForm(project_number = data['project_number'], project_title = data['project_title'], office = data['office'], abc = data['abc'], category = data['category'], aoname = data['aoname'], fundyear = data['fundyear'], fund_source = data['fund_source'], object_of_expenditure = data['object_of_expenditure'], validator = data['validator'], canvasser = data['canvasser'])
-        newReceiving.save()
+        newReceiving = TechnicalServicesDivisionForm(data)
+        newReceiving = newReceiving.save()
+        print(newReceiving)
+        new_pn = ProjectNumbers.objects.create(project_number = data['project_number'], project_title = newReceiving.project_title, tsd = newReceiving)
+
+        new_pn.save()   
+        
         return redirect('tsd home')
     
     
 def edit_database (request):
     if request.method == "GET":
-        return render(request, 'TechnicalServicesDivision/edit_database.html')
-    else:
+        project_number = request.GET.get('project_number', '')
+        
+        if project_number != '':
+            receiving = ProjectNumbers.objects.get(project_number = project_number)
+            receiving = receiving.tsd   
+            
+            if receiving is None:
+                return render(request, 'TechnicalServicesDivision/edit_database.html')
+            else:
+                return render(request, 'TechnicalServicesDivision/edit_database.html', {'receiving': receiving})
+    
+        else:
+            return render(request, 'TechnicalServicesDivision/edit_database.html')
+        
+    elif request.method == "POST":
         data = request.POST
-        project_number = data['project_number']
-        project_title = data['project_title']
-        office = data['office']
-        abc = data['abc']
-        category = data['category']
-        aoname = data['aoname']
-        fundyear = data['fundyear']
-        fund_source = data['fund_source']
-        object_of_expenditure = data['object_of_expenditure']
-        validator = data['validator']
-        canvasser = data['canvasser']
-        TSDReceivingForm.objects.filter(project_number = project_number).update(project_title = project_title, office = office, abc = abc, category = category, aoname = aoname, fundyear = fundyear, fund_source = fund_source, object_of_expenditure = object_of_expenditure, validator = validator, canvasser = canvasser)
+        
+        updateReceiving = TechnicalServicesDivisionForm(data, instance = TSDReceivingForm.objects.get(id = data['id']))
+        updateReceiving.save()
         return redirect('tsd home')
+    
     
     
 def secretariat (request):
