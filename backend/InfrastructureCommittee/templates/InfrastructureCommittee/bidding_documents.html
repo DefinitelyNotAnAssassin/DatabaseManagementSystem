@@ -1,0 +1,163 @@
+{% extends "InfrastructureCommittee/base/base.html" %}
+
+<!-- Bidding Documents -->
+
+{% block content %}
+
+<div
+  class="flex flex-col items-center justify-center h-full w-full border border-black"
+>
+  <div class="w-full text-center text-3xl mt-4 mb-4">BIDDING DOCUMENTS</div>
+
+  <div class="h-full w-[95%] bg-[#274E7E]">
+    <form class="flex justify-end items-center w-full mt-4">
+      <h1 class="mr-2 text-white">SEARCH BY PROJECT NUMBER</h1>
+      <input
+        type="text"
+        name="project_number"
+        id="project_number"
+        class="mr-4"
+        value="{{infra.project_number}}"
+        placeholder="Search by Project Number"
+      />
+      <button type="submit" class="bg-white text-black p-2 rounded mr-4">
+        Search
+      </button>
+    </form>
+
+    <form method="POST">
+      {% csrf_token %}
+      <div class="mb-2 w-full flex items-center">
+        <h1 class="w-64 text-white">PROJECT NO.</h1>
+        <input type="hidden" name="id" value="{{infra.id}}" />
+        <input
+          type="text"
+          class="flex-grow mr-4"
+          name="project_number"
+          id="project_number"
+          value="{{infra.project_number}}"
+        />
+      </div>
+      <div class="mb-2 w-full flex items-center">
+        <h1 class="w-64 text-white">PROJECT TITLE.</h1>
+        <input
+          type="text"
+          class="flex-grow mr-4"
+          name="project_title"
+          id="project_title"
+          value="{{infra.project_title}}"
+        />
+      </div>
+
+      <div class="mb-2 w-full flex items-center">
+        <h1 class="w-64 text-white">ABC</h1>
+        <input
+          type="text"
+          class="flex-grow mr-4"
+          name="abc"
+          id="abc"
+          value="{{infra.abc}}"
+        />
+        <h1 class="w-64 text-white">PROJECT TYPE</h1>
+        <input
+          type="text"
+          class="flex-grow mr-4"
+          name="project_type"
+          id="project_type"
+          value="{{infra.project_type}}"
+        />
+      </div>
+
+      <div class="mb-2 w-full flex items-center">
+        <h1 class="w-64 text-white">AMOUNT IN WORDS:</h1>
+        <input
+          type="text"
+          class="flex-grow mr-4"
+          name="amount_in_words"
+          id="amount_in_words"
+          disabled
+          value="{{abc_in_words}}"
+        />
+      </div>
+
+      <div class="mb-2 w-full flex items-center">
+        <h1 class="w-64 text-white">KEY PERSONNEL</h1>
+        <input
+          type="text"
+          class="flex-grow mr-4"
+          name="key_personnel"
+          id="key_personnel"
+          value="{{infra.key_personnel}}"
+        />
+      </div>
+
+      <div class="mb-2 w-full flex items-center">
+        <h1 class="w-64 text-white">MAJOR EQUIPMENT</h1>
+        <input
+          type="text"
+          class="flex-grow mr-4"
+          name="major_equipment"
+          id="major_equipment"
+          value="{{infra.major_equipment}}"
+        />
+      </div>
+
+      <div class="mb-2 w-full flex items-center">
+        <h1 class="w-64 text-white">ABC 2%:</h1>
+        <input
+          type="text"
+          class="flex-grow mr-4"
+          name="abc2"
+          id="abc2"
+          disabled
+          value="{{abc2}}"
+        />
+        <h1 class="w-64 text-white">ABC 5%:</h1>
+        <input
+          type="text"
+          class="flex-grow mr-4"
+          name="abc5"
+          id="abc5"
+          disabled
+          value="{{abc5}}"
+        />
+      </div>
+
+      <div class="mb-2 w-full flex items-center">
+        <h1 class="w-64 text-white">CALENDAR DAYS</h1>
+        <input
+          type="text"
+          class="flex-grow mr-4"
+          name="calendar_days"
+          id="calendar_days"
+          value="{{infra.calendar_days}}"
+        />
+
+        <h1 class="w-64 text-white">PRE-BID DATE</h1>
+        <input
+          type="text"
+          class="flex-grow mr-4"
+          name="pre_bid_date"
+          id="pre_bid_date"
+          value="{{infra.pre_bid_date}}"
+        />
+      </div>
+
+      <div class="mt-12 w-full flex justify-end">
+        <button
+          type="submit"
+          class="p-2 bg-white font-semibold rounded mr-4 px-3"
+        >
+          UPDATE
+        </button>
+        <a
+          href="{% url 'infrastructure home' %}"
+          class="p-2 bg-white font-semibold rounded mr-4 px-3"
+        >
+          CLOSE
+        </a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,93 @@
+{% extends "DatabaseManagementDivision/base/base.html" %} {% block content %}
+
+<div class="h-full w-full flex justify-center items-center">
+  <div
+    class="h-[80vh] w-full text-center flex flex-col justify-center items-center gap-4 overflow-y-auto"
+  >
+    <a
+      class="bg-[#274E7E] w-1/2 h-[15vh] flex justify-center items-center"
+      href="{% url 'dmd goods and services' %}"
+    >
+      <h1
+        class="bg-gray-300 h-[70%] w-[90%] flex justify-center items-center font-semibold"
+      >
+        Goods and Services
+      </h1>
+    </a>
+
+    <a
+      class="bg-[#274E7E] w-1/2 h-[15vh] flex justify-center items-center"
+      href="{% url 'dmd infrastructure and consultancy' %}"
+    >
+      <h1
+        class="bg-gray-300 h-[70%] w-[90%] flex justify-center items-center font-semibold"
+      >
+        Infrastructure and Consultancy
+      </h1>
+    </a>
+
+    <a
+      class="bg-[#274E7E] w-1/2 h-[15vh] flex justify-center items-center"
+      href="{% url 'dmd balance checker' %}"
+    >
+      <h1
+        class="bg-gray-300 h-[70%] w-[90%] flex justify-center items-center font-semibold"
+      >
+        Balance Checker
+      </h1>
+    </a>
+
+    <a
+      class="bg-[#274E7E] w-1/2 h-[15vh] flex justify-center items-center"
+      href="{% url 'dmd ppmp finding' %}"
+    >
+      <h1
+        class="bg-gray-300 h-[70%] w-[90%] flex justify-center items-center font-semibold"
+      >
+        PPMP Findings
+      </h1>
+    </a>
+
+    <a
+      class="bg-[#274E7E] w-1/2 h-[15vh] flex justify-center items-center"
+      href="{% url 'dmd amendatory list' %}"
+    >
+      <h1
+        class="bg-gray-300 h-[70%] w-[90%] flex justify-center items-center font-semibold"
+      >
+        Create Amendatory
+      </h1>
+    </a>
+
+    <a
+      class="bg-[#274E7E] w-1/2 h-[15vh] flex justify-center items-center"
+      href="{% url 'dmd amendatory procurement plan' %}"
+    >
+      <h1
+        class="bg-gray-300 h-[70%] w-[90%] flex justify-center items-center font-semibold"
+      >
+        Amendatory Procurement Plan
+      </h1>
+    </a>
+
+    <a
+      class="bg-[#274E7E] w-1/2 h-[15vh] flex justify-center items-center"
+      href="{% url 'dmd balance checker app id' %}"
+    >
+      <h1
+        class="bg-gray-300 h-[70%] w-[90%] flex justify-center items-center font-semibold"
+      >
+        Balance Checker (App ID)
+      </h1>
+    </a>
+  </div>
+</div>
+
+<div class="h-8 w-1/4 flex items-end mx-2">
+  <div class="bg-white bg-opacity-70 w-1/2 h-1/8">
+    <h1>{{request.user.last_name}}, {{request.user.first_name}}</h1>
+    <h1>{{request.user.department}}</h1>
+  </div>
+</div>
+
+{% endblock content %}

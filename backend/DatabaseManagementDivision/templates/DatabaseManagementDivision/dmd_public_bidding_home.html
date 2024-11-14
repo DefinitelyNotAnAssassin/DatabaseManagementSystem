@@ -1,0 +1,43 @@
+{% extends "DatabaseManagementDivision/base/base.html" %}
+
+<!-- Public Bidding Home -->
+
+{% block content %}
+
+<div class="h-full w-full flex flex-col items-center justify-center">
+  <h1 class="text-white text-3xl my-4">Bidding Database</h1>
+  <a
+    class="bg-[#274E7E] w-1/2 h-[15vh] flex justify-center items-center"
+    href="{% url 'dmd public bidding' %}"
+  >
+    <h1
+      class="bg-gray-300 h-[70%] w-[90%] flex justify-center items-center font-semibold"
+    >
+      Public Bidding
+    </h1>
+  </a>
+
+  <a
+    class="bg-[#274E7E] w-1/2 h-[15vh] flex justify-center items-center"
+    href="{% url 'dmd amendatory procurement plan' %}"
+  >
+    <h1
+      class="bg-gray-300 h-[70%] w-[90%] flex justify-center items-center font-semibold"
+    >
+      Alternative Mode
+    </h1>
+  </a>
+
+  <a
+    class="bg-[#274E7E] w-1/2 h-[15vh] flex justify-center items-center"
+    href="{% url 'dmd amendatory procurement plan' %}"
+  >
+    <h1
+      class="bg-gray-300 h-[70%] w-[90%] flex justify-center items-center font-semibold"
+    >
+      Negotiated
+    </h1>
+  </a>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,103 @@
+{% extends "PSMD/base/base.html" %}
+
+<!-- PSMD Database -->
+{% block content %}
+<div class="h-full w-full">
+  <div class="w-full mt-5">
+    <h1 class="text-center text-white text-5xl">PSMD: INVENTORY</h1>
+  </div>
+
+  <div class="w-full h-[20vh]">
+    <div class="w-full flex mb-2">
+      <h1 class="text-white text-xl w-80">PR NUMBER</h1>
+      <input class="flex-grow" type="text" name="" id="" />
+    </div>
+
+    <div class="w-full flex mb-2">
+      <h1 class="text-white text-xl w-80">FROM</h1>
+      <input class="w-60" type="text" name="" id="" />
+      <h1
+        class="text-center w-40 text-white bg-blue-300 px-4 flex items-center justify-center"
+      >
+        PENDING
+      </h1>
+    </div>
+
+    <div class="w-full flex mb-2">
+      <h1 class="text-white text-xl w-80">TO</h1>
+      <input class="w-60" type="text" name="" id="" />
+      <h1
+        class="text-center w-40 text-white bg-blue-300 px-4 flex items-center justify-center"
+      >
+        PENDING
+      </h1>
+    </div>
+  </div>
+
+  <div class="w-full flex items-center justify-center">
+    <div class="w-[98%] h-[65vh] bg-[#274E7E]">
+      <div class="w-full h-[75%] flex mt-4">
+        <div class="w-1/2 h-full mx-2">
+          <div class="w-full flex">
+            <h1 class="text-xl text-white font-semibold w-60">ID</h1>
+            <input class="flex-grow" type="text" name="" id="" />
+          </div>
+          <div class="w-full flex">
+            <h1 class="text-xl text-white font-semibold w-60">PR NUMBER</h1>
+            <input class="flex-grow" type="text" name="" id="" />
+          </div>
+          <div class="w-full flex">
+            <h1 class="text-xl text-white font-semibold w-60">ABC</h1>
+            <input class="flex-grow" type="text" name="" id="" />
+          </div>
+          <div class="w-full flex">
+            <h1 class="text-xl text-white font-semibold w-60">OFFICE</h1>
+            <input class="flex-grow" type="text" name="" id="" />
+          </div>
+          <div class="w-full flex">
+            <h1 class="text-xl text-white font-semibold w-60">CANVASSER</h1>
+            <input class="flex-grow" type="text" name="" id="" />
+          </div>
+          <div class="w-full flex">
+            <h1 class="text-xl text-white font-semibold w-60">CANVASSER 2</h1>
+            <input class="flex-grow" type="text" name="" id="" />
+          </div>
+          <div class="w-full flex">
+            <h1 class="text-xl text-white font-semibold w-60">EXPENDITURE</h1>
+            <input class="flex-grow" type="text" name="" id="" />
+          </div>
+        </div>
+
+        <div class="w-1/2 h-full flex mx-2">
+          <div class="w-1/4 h-full"></div>
+          <div class="w-3/4 h-full">
+            <div class="w-full">
+              <div class="text-white font-semibold w-full flex justify-around">
+                <h1>RECEIVED</h1>
+                <h1>RELEASED</h1>
+                <h1>INTERVAL</h1>
+              </div>
+            </div>
+            <div>
+              <div class="text-white font-semibold w-full flex justify-around">
+                <h1 class="flex-grow h-4 bg-white mx-2"></h1>
+                <h1 class="flex-grow h-4 bg-white mx-2"></h1>
+                <h1 class="flex-grow h-4 bg-white mx-2"></h1>
+              </div>
+
+              <div
+                class="text-white font-semibold w-full flex justify-around mt-2"
+              >
+                <h1 class="flex-grow h-4 bg-white mx-2"></h1>
+                <h1 class="flex-grow h-4 bg-white mx-2"></h1>
+                <h1 class="flex-grow h-4 bg-white mx-2"></h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

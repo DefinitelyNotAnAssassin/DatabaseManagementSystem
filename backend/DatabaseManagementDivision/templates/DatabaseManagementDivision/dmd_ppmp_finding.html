@@ -1,0 +1,28 @@
+{% extends "DatabaseManagementDivision/base/base.html" %}
+
+<!-- PPMD Finding
+ -->
+
+{% block content %}
+
+<div class="h-full w-full flex flex-col items-center">
+  <h1 class="text-3xl text-center text-white my-4">DMD: PPMD Findings</h1>
+  <div class="h-full w-full bg-[#94B9E8]">
+    <div class="w-full h-12 text-black text-center flex justify-around mt-8">
+      <h1 class="w-full">Project Number</h1>
+      <h1 class="w-full">Tracking Number</h1>
+      <h1 class="w-full">Date Received by Validator</h1>
+      <h1 class="w-full">Date Released to PSMD</h1>
+      <h1 class="w-full">Status</h1>
+    </div>
+
+    <div class="w-full h-20 text-black text-center flex justify-around mt-2">
+      <input type="text" />
+      <input type="text" />
+      <input type="text" />
+      <input type="text" />
+      <input type="text" />
+    </div>
+  </div>
+</div>
+{% endblock content %}

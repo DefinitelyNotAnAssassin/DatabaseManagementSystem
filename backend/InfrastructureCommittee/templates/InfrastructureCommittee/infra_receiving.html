@@ -1,0 +1,68 @@
+{% extends "InfrastructureCommittee/base/base.html" %} {% block content %}
+
+<div class="flex h-full w-full items-center justify-center">
+  <form
+    method="POST"
+    class="flex-col space-y-2 w-1/2 bg-[#274E7E] p-4 rounded-md"
+  >
+    {% csrf_token %}
+    <div class="flex w-full">
+      <h1 class="text-2xl mx-3 text-white w-60">ACCOUNT CODE</h1>
+      <input type="text" name="account_code" id="" class="w-full mx-3" />
+    </div>
+    <div class="flex w-full">
+      <h1 class="text-2xl mx-3 text-white w-60">PROJECT NUMBER</h1>
+      <input type="text" name="project_number" id="" class="w-full mx-3" />
+    </div>
+    <div class="flex w-full">
+      <h1 class="text-2xl mx-3 text-white w-60">PROJECT TITLE</h1>
+      <input type="text" name="project_title" id="" class="w-full mx-3" />
+    </div>
+    <div class="flex w-full">
+      <h1 class="text-2xl mx-3 text-white w-60">ABC</h1>
+      <input type="text" name="abc" id="" class="w-full mx-3" />
+    </div>
+    <div class="flex w-full">
+      <h1 class="text-2xl mx-3 text-white w-60">EARLY PROCUREMENT</h1>
+      <input type="text" name="early_procurement" id="" class="w-full mx-3" />
+    </div>
+    <div class="flex w-full">
+      <h1 class="text-2xl mx-3 text-white w-60">OFFICE</h1>
+      <input type="text" name="office" id="" class="w-full mx-3" />
+    </div>
+    <div class="flex w-full">
+      <h1 class="text-2xl mx-3 text-white w-60">LOCATION / BARANGAY</h1>
+      <input type="text" name="location_barangay" id="" class="w-full mx-3" />
+    </div>
+    <div class="flex w-full">
+      <h1 class="text-2xl mx-3 text-white w-60">CALENDAR DAYS</h1>
+      <input type="text" name="calendar_days" id="" class="w-full mx-3" />
+    </div>
+
+    <div class="flex w-full">
+      <h1 class="text-2xl mx-3 text-white w-60">BATCH:</h1>
+      <input type="text" name="batch" id="" class="w-full mx-3" />
+    </div>
+    <div class="flex w-full">
+      <h1 class="text-2xl mx-3 text-white w-60">MODE OF PROCUREMENT</h1>
+      <input
+        type="text"
+        name="mode_of_procurement"
+        id=""
+        class="w-full mx-3 flex-grow"
+      />
+    </div>
+    <div class="flex w-full justify-center space-x-4 text-black">
+      <button type="submit" class="bg-white p-1 px-2 rounded font-semibold">
+        ADD
+      </button>
+      <a
+        href="{% url 'tsd database' %}"
+        class="bg-white rounded p-1 px-2 font-semibold"
+      >
+        CANCEL</a
+      >
+    </div>
+  </form>
+</div>
+{% endblock content %}

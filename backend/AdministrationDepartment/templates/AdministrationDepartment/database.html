@@ -1,0 +1,121 @@
+{% extends "AdministrationDepartment/base/base.html" %} {% block content %}
+
+<!-- Receiving Form -->
+<div
+  class="h-screen flex w-full items-center justify-center border border-black"
+>
+  <form
+    action=""
+    method="POST"
+    class="bg-[#274E7E] w-1/2 p-4 rounded-md text-white"
+  >
+    <h2 class="text-lg font-bold mb-4">RECEIVING FORM</h2>
+    <div class="flex mb-2">
+      <div class="mr-4">
+        {% csrf_token %}
+        <label for="pd-routing-number" class="block">PD Routing Number</label>
+        <input
+          type="text"
+          id="pd-routing-number"
+          name="pd_routing_number"
+          class="bg-gray-200 text-black px-2 py-1 rounded"
+          placeholder="PD"
+        />
+      </div>
+      <div>
+        <label for="year" class="block">YEAR</label>
+        <input
+          type="text"
+          id="year"
+          name="year"
+          class="bg-gray-200 text-black px-2 py-1 rounded"
+          placeholder="YEAR"
+        />
+      </div>
+
+      <div class="ml-3">
+        <label for="year" class="block">ID</label>
+        <input
+          type="text"
+          id="pd_id"
+          name="pd_id"
+          class="bg-gray-200 text-black px-2 py-1 rounded"
+          placeholder="ID"
+        />
+      </div>
+    </div>
+    <div class="mb-2">
+      <label for="received-by" class="block">Received by</label>
+      <input
+        type="text"
+        id="received-by"
+        name="received_by"
+        class="bg-gray-200 text-black w-full px-2 py-1 rounded"
+      />
+    </div>
+    <div class="grid grid-cols-2 gap-4 mb-2">
+      <div>
+        <label for="sender" class="block">Sender</label>
+        <input
+          type="text"
+          id="sender"
+          name="sender"
+          class="bg-gray-200 text-black w-full px-2 py-1 rounded"
+        />
+      </div>
+      <div>
+        <label for="office-code" class="block">Office Code</label>
+        <input
+          type="text"
+          id="office-code"
+          name="office_code"
+          class="bg-gray-200 text-black w-full px-2 py-1 rounded"
+        />
+      </div>
+    </div>
+    <div class="grid grid-cols-2 gap-4 mb-4">
+      <div>
+        <label for="end-user" class="block">End-user</label>
+        <input
+          type="text"
+          id="end-user"
+          name="end_user"
+          class="bg-gray-200 text-black w-full px-2 py-1 rounded"
+        />
+      </div>
+      <div>
+        <label for="document-type" class="block">Document Type</label>
+        <input
+          type="text"
+          id="document-type"
+          name="document_type"
+          class="bg-gray-200 text-black w-full px-2 py-1 rounded"
+        />
+      </div>
+    </div>
+    <div class="mb-4">
+      <label for="program" class="block">Program</label>
+      <input
+        type="text"
+        id="program"
+        name="program"
+        class="bg-gray-200 text-black w-full px-2 py-1 rounded"
+      />
+    </div>
+    <div class="flex justify-end">
+      <button class="bg-white text-blue-800 px-4 py-2 rounded-md mr-2">
+        Submit
+      </button>
+      <button class="bg-blue-500 text-white px-4 py-2 rounded-md">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>
+
+<!-- Full Name and Division Assigned -->
+<div class="text-blue-800 mt-4">
+  {{request.user.last_name}}, {{request.user.first_name}}<br />
+  {{request.user.department}}
+</div>
+{% endblock content %}

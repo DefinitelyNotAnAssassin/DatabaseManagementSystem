@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    {% block head %} {% endblock head %}
+  </head>
+  <body>
+    <div class="h-[8vh] flex justify-end w-full bg-[#274E7E] items-center">
+      <a href="{% url 'index' %}" class="text-white text-lg p-1 px-2 mx-2"
+        >Home</a
+      >
+      <a class="text-white text-lg p-1 px-2 mx-2">Contact</a>
+      <a class="text-white text-lg p-1 px-2 mx-2">Log in</a>
+    </div>
+
+    <div
+      class="h-[92vh] w-full bg-gray-600 no-repeat bg-cover bg-center flex flex-col"
+      style="background-image: url('/media/background.png')"
+    >
+      {% block content %} {% endblock content %}
+    </div>
+  </body>
+</html>

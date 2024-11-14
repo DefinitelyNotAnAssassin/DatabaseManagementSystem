@@ -1,0 +1,76 @@
+{% extends "TechnicalServicesDivision/base/base.html" %} {% block content %}
+
+<div class="flex h-full w-full items-center justify-center">
+  <form
+    method="POST"
+    class="flex-col space-y-2 w-1/2 bg-[#274E7E] p-4 rounded-md"
+  >
+    {% csrf_token %}
+    <div class="flex w-full">
+      <h1 class="text-2xl text-nowrap mx-3 text-white w-80">PROJECT NUMBER</h1>
+      <input type="text" name="project_number" id="" class="w-full mx-3" />
+    </div>
+    <div class="flex w-full">
+      <h1 class="text-2xl text-nowrap mx-3 text-white w-80">PROJECT TITLE</h1>
+      <input type="text" name="project_title" id="" class="w-full mx-3" />
+    </div>
+    <div class="flex w-full">
+      <h1 class="text-2xl text-nowrap mx-3 text-white w-80">OFFICE</h1>
+      <input type="text" name="office" id="" class="w-full mx-3" />
+    </div>
+    <div class="flex w-full">
+      <h1 class="text-2xl text-nowrap mx-3 text-white w-80">ABC</h1>
+      <input type="text" name="abc" id="" class="w-full mx-3" />
+    </div>
+    <div class="flex w-full">
+      <h1 class="text-2xl text-nowrap mx-3 text-white w-80">CATEGORY</h1>
+      <input type="text" name="category" id="" class="w-full mx-3" />
+    </div>
+    <div class="flex w-full">
+      <h1 class="text-2xl text-nowrap mx-3 text-white w-80">AONAME</h1>
+      <input type="text" name="aoname" id="" class="w-full mx-3" />
+    </div>
+    <div class="flex w-full">
+      <h1 class="text-2xl text-nowrap mx-3 text-white w-80">FUNDYEAR</h1>
+      <input type="text" name="fundyear" id="" class="w-full mx-3" />
+    </div>
+    <div class="flex w-full">
+      <h1 class="text-2xl text-nowrap mx-3 text-white w-80">FUND SOURCE</h1>
+      <input type="text" name="fund_source" id="" class="w-full mx-3" />
+    </div>
+    <div class="flex w-full">
+      <h1 class="text-2xl text-nowrap mx-3 text-white w-80">
+        OBJECT OF EXPENDITURE
+      </h1>
+      <input
+        type="text"
+        name="object_of_expenditure"
+        id=""
+        class="w-full mx-3"
+      />
+    </div>
+    <div class="flex w-full">
+      <h1 class="text-2xl text-nowrap mx-3 text-white w-80">VALIDATOR</h1>
+      <input type="text" name="validator" id="" class="w-full mx-3" />
+    </div>
+    <div class="flex w-full">
+      <h1 class="text-2xl text-nowrap mx-3 text-white w-80">CANVASSER</h1>
+      <input type="text" name="canvasser" id="" class="w-full mx-3" />
+    </div>
+    <div class="flex w-full justify-center space-x-4 text-black">
+      <button
+        type="submit"
+        class="bg-blue-600 p-1 px-2 text-white rounded rounded-lg font-semibold"
+      >
+        SAVE
+      </button>
+      <a
+        href="{% url 'tsd database' %}"
+        class="bg-red-500 text-white rounded rounded-lg p-1 px-2 font-semibold"
+      >
+        CANCEL</a
+      >
+    </div>
+  </form>
+</div>
+{% endblock content %}
