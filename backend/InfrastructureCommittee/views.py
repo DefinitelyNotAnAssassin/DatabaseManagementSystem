@@ -1,7 +1,16 @@
 from django.shortcuts import render, redirect
+from django.http import JsonResponse, HttpResponse
+from django.db.utils import IntegrityError 
+from django.core.exceptions import ObjectDoesNotExist
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.decorators import api_view, permission_classes 
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.tokens import RefreshToken
 from InfrastructureCommittee.forms import InfrastructureCommitteeForm
 from InfrastructureCommittee.models import InfrastructureCommittee
 import inflect
+import json
+
 # Create your views here.
 
 def home(request):
@@ -112,6 +121,7 @@ def bidding_documents(request):
     
     else:
         return render(request, 'InfrastructureCommittee/bidding_documents.html')
+
 def infra_masterlist(request):
     if request.GET.get('project_number') is not None:
         search = request.GET.get('project_number')
@@ -129,3 +139,133 @@ def infra_masterlist(request):
 
 def consultancy_receiving(request):
     return render(request, 'InfrastructureCommittee/consultancy_receiving.html')
+
+@api_view(['GET'])
+def getProjectNumbers(request):
+    project_numbers = InfrastructureCommittee.objects.all().values('project_number')
+    project_numbers = list(project_numbers)
+    if project_numbers == []:
+        project_numbers = [{}]
+        return JsonResponse({'project_numbers': project_numbers}, safe = False)
+    else:
+        return JsonResponse({'project_numbers': project_numbers}, safe = False)
+    
+    
+@api_view(['POST'])
+def addInfraReceiving(request): 
+    data = request.body 
+    data = data.decode('utf-8')
+    json_data = json.loads(data)
+    try:
+        InfrastructureCommittee.objects.create(
+            account_code=json_data.get('account_code', ''), 
+            project_number=json_data.get('project_number', ''), 
+            project_title=json_data.get('project_title', ''), 
+            project_type=json_data.get('project_type', ''), 
+            abc=json_data.get('abc', ''), 
+            early_procurement=json_data.get('early_procurement', ''), 
+            office=json_data.get('office', ''), 
+            location=json_data.get('location', ''), 
+            calendar_days=json_data.get('calendar_days', ''), 
+            batch=json_data.get('batch', ''), 
+            mode_of_procurement=json_data.get('mode_of_procurement', ''), 
+            pre_bid_date=json_data.get('pre_bid_date', ''), 
+            fund_source=json_data.get('fund_source', ''), 
+            duration=json_data.get('duration', ''), 
+            remarks=json_data.get('remarks', ''), 
+            status=json_data.get('status', ''), 
+            mode=json_data.get('mode', ''), 
+            bid_amount=json_data.get('bid_amount', ''), 
+            pre_proc_date=json_data.get('pre_proc_date', ''), 
+            itb_date=json_data.get('itb_date', ''), 
+            bidding_date=json_data.get('bidding_date', ''), 
+            bid_eval_date=json_data.get('bid_eval_date', ''), 
+            post_qua=json_data.get('post_qua', ''), 
+            reso_date=json_data.get('reso_date', ''), 
+            noa_date=json_data.get('noa_date', ''), 
+            contract_date=json_data.get('contract_date', ''), 
+            np_start=json_data.get('np_start', ''), 
+            np_end=json_data.get('np_end', '')
+        )
+        
+    except IntegrityError as e: 
+        print(e)
+        return JsonResponse({'status': 'error', 'message' : 'Project number already existing in the database.'}, safe = False)
+    
+    except Exception as e:
+        print(e)
+        return JsonResponse({'status': 'error', 'message' : 'Form error.'}, safe = False)
+    return JsonResponse({'status': 'success', 'message': 'Project added successfully.'}, safe = False)
+
+
+@api_view(['POST']) 
+def updateInfraMasterlist(request): 
+    data = request.body 
+    data = data.decode('utf-8') 
+    json_data = json.loads(data) 
+    print(json_data['project_number'])
+    try: 
+        InfrastructureCommittee.objects.filter(project_number=json_data['project_number']).update(
+            account_code=json_data.get('account_code', ''), 
+            project_title=json_data.get('project_title', ''), 
+            project_type=json_data.get('project_type', ''), 
+            abc=json_data.get('abc', ''), 
+            early_procurement=json_data.get('early_procurement', ''), 
+            office=json_data.get('office', ''), 
+            location=json_data.get('location', ''), 
+            calendar_days=json_data.get('calendar_days', ''), 
+            batch=json_data.get('batch', ''), 
+            mode_of_procurement=json_data.get('mode_of_procurement', ''), 
+            pre_bid_date=json_data.get('pre_bid_date', ''), 
+            fund_source=json_data.get('fund_source', ''), 
+            duration=json_data.get('duration', ''), 
+            remarks=json_data.get('remarks', ''), 
+            status=json_data.get('status', ''), 
+            mode=json_data.get('mode', ''), 
+            bid_amount=json_data.get('bid_amount', ''), 
+            pre_proc_date=json_data.get('pre_proc_date', ''), 
+            itb_date=json_data.get('itb_date', ''), 
+            bidding_date=json_data.get('bidding_date', ''), 
+            bid_eval_date=json_data.get('bid_eval_date', ''), 
+            post_qua=json_data.get('post_qua', ''), 
+            reso_date=json_data.get('reso_date', ''), 
+            noa_date=json_data.get('noa_date', ''), 
+            contract_date=json_data.get('contract_date', ''), 
+            np_start=json_data.get('np_start', ''), 
+            np_end=json_data.get('np_end', '')
+        )
+        
+    except ObjectDoesNotExist as e: 
+        print(e)
+        return JsonResponse({'status': 'error', 'message' : 'Project number does not exist.'}, safe = False)
+    except Exception as e: 
+        print(e)
+        return JsonResponse({'status': 'error', 'message' : 'An error has occured.'}, safe = False)
+    return JsonResponse({'status': 'success', 'message': 'Project updated successfully.'}, safe = False)
+
+
+@csrf_exempt
+def searchInfraMasterlist(request): 
+    if request.method == "POST":
+        data = request.body     
+        data = data.decode('utf-8') 
+        json_data = json.loads(data) 
+        
+                
+        if json_data['project_number'] != '': 
+            project_number = json_data['project_number']
+            try: 
+                receiving = InfrastructureCommittee.objects.get(project_number=project_number)
+                fields = ['account_code', 'project_number', 'project_title', 'project_type', 'abc', 'early_procurement', 'office', 'location', 'calendar_days', 'batch', 'mode_of_procurement', 'pre_bid_date', 'fund_source', 'duration', 'remarks', 'status', 'mode', 'bid_amount', 'pre_proc_date', 'itb_date', 'bidding_date', 'bid_eval_date', 'post_qua', 'reso_date', 'noa_date', 'contract_date', 'np_start', 'np_end']
+                data = {field: getattr(receiving, field) for field in fields}
+                return JsonResponse({'status': 'success', 'data': data}, safe = False)
+                
+            except ObjectDoesNotExist as e: 
+                print(e)
+                return JsonResponse({'status': 'success', 'data' : ''}, safe = False)
+         
+
+    else: 
+        return JsonResponse({'status': 'error', 'message' : 'An error has occured.'}, safe = False)
+
+

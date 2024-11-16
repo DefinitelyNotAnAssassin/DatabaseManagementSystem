@@ -31,7 +31,6 @@ def logout(request):
 
 
 @csrf_exempt
-@api_view(['POST']) 
 def verifyAccount(request): 
     data = request.body 
     data = data.decode('utf-8') 
@@ -57,16 +56,13 @@ def verifyAccount(request):
                                 'refresh': str(refresh),
                                 'access': str(refresh.access_token)})
     else:
-        return HttpResponse(status=401) 
+        return HttpResponse(status=501) 
 
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def verifyAuth(request): 
-    if request.user.is_authenticated:
-        return HttpResponse(status=200)
-    else: 
-        return HttpResponse(status=401)
+    return JsonResponse({'status': 'success'}, safe = False)
 
 
 

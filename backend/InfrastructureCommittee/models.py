@@ -4,7 +4,7 @@ from django.db import models
 
 class InfrastructureCommittee(models.Model):
     account_code = models.CharField(max_length=255, blank=True, null=True)
-    project_number = models.CharField(max_length=255, blank=True, null=True)
+    project_number = models.CharField(max_length=255, blank=True, null=True, unique=True)
     project_title = models.CharField(max_length=255, blank=True, null=True)
     project_type = models.CharField(max_length=255, blank=True, null=True)
     abc = models.CharField(max_length=255, blank=True, null=True)
