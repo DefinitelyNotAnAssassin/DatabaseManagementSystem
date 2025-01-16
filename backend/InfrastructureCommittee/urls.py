@@ -13,4 +13,5 @@ urlpatterns = [
     path('addInfraReceiving', views.addInfraReceiving, name='add infra receiving'),
     path('updateInfraMasterlist', views.updateInfraMasterlist, name='update infra masterlist'),
     path('searchInfraMasterlist', views.searchInfraMasterlist, name='search infra masterlist'),
+    path('updateBiddingDocuments', views.updateBiddingDocuments, name='update bidding documents'),  
 ]

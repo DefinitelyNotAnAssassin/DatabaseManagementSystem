@@ -256,10 +256,16 @@ def searchInfraMasterlist(request):
             project_number = json_data['project_number']
             try: 
                 receiving = InfrastructureCommittee.objects.get(project_number=project_number)
-                fields = ['account_code', 'project_number', 'project_title', 'project_type', 'abc', 'early_procurement', 'office', 'location', 'calendar_days', 'batch', 'mode_of_procurement', 'pre_bid_date', 'fund_source', 'duration', 'remarks', 'status', 'mode', 'bid_amount', 'pre_proc_date', 'itb_date', 'bidding_date', 'bid_eval_date', 'post_qua', 'reso_date', 'noa_date', 'contract_date', 'np_start', 'np_end']
+                fields = ['account_code', 'project_number', 'project_title', 'project_type', 'abc', 'early_procurement', 'office', 'location', 'calendar_days', 'batch', 'mode_of_procurement', 'pre_bid_date', 'fund_source', 'duration', 'remarks', 'status', 'mode', 'bid_amount', 'pre_proc_date', 'pre_bid_date', 'itb_date', 'bidding_date', 'bid_eval_date', 'key_personnel', 'major_equipment', 'post_qua', 'reso_date', 'noa_date', 'contract_date', 'np_start', 'np_end']
                 data = {field: getattr(receiving, field) for field in fields}
+                if data['abc'] is not None and data['abc'] != '':
+                    data['abc2'] = float(data['abc']) * 0.02
+                    data['abc5'] =  float(data['abc']) * 0.05
+                    data['amount_in_words'] = inflect.engine().number_to_words(data['abc'])
+                    
+                    
                 return JsonResponse({'status': 'success', 'data': data}, safe = False)
-                
+        
             except ObjectDoesNotExist as e: 
                 print(e)
                 return JsonResponse({'status': 'success', 'data' : ''}, safe = False)
@@ -267,5 +273,60 @@ def searchInfraMasterlist(request):
 
     else: 
         return JsonResponse({'status': 'error', 'message' : 'An error has occured.'}, safe = False)
+
+
+@csrf_exempt    
+@api_view(['POST']) 
+@permission_classes([IsAuthenticated])
+def updateBiddingDocuments(request):
+    data = request.body 
+    data = data.decode('utf-8') 
+    json_data = json.loads(data) 
+    print(json_data['project_number'])
+    print(data)
+    try: 
+        InfrastructureCommittee.objects.filter(project_number=json_data['project_number']).update(
+            account_code=json_data.get('account_code', ''), 
+            project_title=json_data.get('project_title', ''), 
+            project_type=json_data.get('project_type', ''), 
+            abc=json_data.get('abc', ''), 
+            early_procurement=json_data.get('early_procurement', ''), 
+            office=json_data.get('office', ''), 
+            location=json_data.get('location', ''), 
+            calendar_days=json_data.get('calendar_days', ''), 
+            major_equipment=json_data.get('major_equipment', ''),   
+            key_personnel=json_data.get('key_personnel', ''),
+            batch=json_data.get('batch', ''), 
+            mode_of_procurement=json_data.get('mode_of_procurement', ''), 
+            pre_bid_date=json_data.get('pre_bid_date', ''), 
+            fund_source=json_data.get('fund_source', ''), 
+            duration=json_data.get('duration', ''), 
+            remarks=json_data.get('remarks', ''), 
+            status=json_data.get('status', ''), 
+            mode=json_data.get('mode', ''), 
+            bid_amount=json_data.get('bid_amount', ''), 
+            pre_proc_date=json_data.get('pre_proc_date', ''), 
+            itb_date=json_data.get('itb_date', ''), 
+            bidding_date=json_data.get('bidding_date', ''), 
+            bid_eval_date=json_data.get('bid_eval_date', ''), 
+            post_qua=json_data.get('post_qua', ''), 
+            reso_date=json_data.get('reso_date', ''), 
+            noa_date=json_data.get('noa_date', ''), 
+            contract_date=json_data.get('contract_date', ''), 
+            np_start=json_data.get('np_start', ''), 
+            np_end=json_data.get('np_end', '')
+        )
+        
+    except ObjectDoesNotExist as e: 
+        print(e)
+        return JsonResponse({'status': 'error', 'message' : 'Project number does not exist.'}, safe = False)
+    except Exception as e: 
+        print(e)
+        return JsonResponse({'status': 'error', 'message' : 'An error has occured.'}, safe = False)
+    return JsonResponse({'status': 'success', 'message': 'Project updated successfully.'}, safe = False)
+
+
+
+
 
 
